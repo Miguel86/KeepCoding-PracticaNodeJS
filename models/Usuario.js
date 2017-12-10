@@ -10,7 +10,7 @@ const usuarioSchema = mongoose.Schema({
 });
 //Creamos un método estático
 anuncioSchema.statics.list = function(filters, limit, skip, sort, fields) {
-    const query = Agente.find(filters);
+    const query = Usuario.find(filters);
     query.limit(limit);
     query.skip(skip);
     query.sort(sort);
