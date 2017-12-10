@@ -9,7 +9,7 @@ const usuarioSchema = mongoose.Schema({
     clave: String
 });
 //Creamos un método estático
-anuncioSchema.statics.list = function(filters, limit, skip, sort, fields) {
+usuarioSchema.statics.list = function(filters, limit, skip, sort, fields) {
     const query = Usuario.find(filters);
     query.limit(limit);
     query.skip(skip);
