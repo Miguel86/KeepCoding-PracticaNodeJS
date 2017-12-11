@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const Anuncio = require('../../models/Anuncio');
 
+const jwtAuth = require('../../lib/jwtAuths');
+router.use(jwtAuth());
 /**
  * GET /anuncios
  * Obtener una lista de anuncios

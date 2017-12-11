@@ -1,0 +1,15 @@
+{
+    "model": "Usuario",
+    "data": [
+        {
+            "nombre":   "Miguel",
+            "email":   "migueldsc86@gmail.com",
+            "clave":   "tests"
+        },
+        {
+            "nombre":   "Javier",
+            "email":   "jamg44@gmail.com",
+            "clave":   "tests"
+        }
+    ]
+}

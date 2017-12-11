@@ -9,13 +9,14 @@ const usuarioSchema = mongoose.Schema({
     clave: String
 });
 //Creamos un método estático
-usuarioSchema.statics.list = function(filters, limit, skip, sort, fields) {
+usuarioSchema.statics.list = function(filters) {
     const query = Usuario.find(filters);
-    query.limit(limit);
-    query.skip(skip);
-    query.sort(sort);
-    query.select(fields);
+    return query.exec();
+}
 
+//Creamos un método estático
+usuarioSchema.statics.poremail = function(filters) {
+    const query = Usuario.findOne(filters);
     return query.exec();
 }
 
