@@ -1,14 +1,28 @@
 var express = require('express');
+var i18n = require("i18n");
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+i18n.configure({
+  locales:['en', 'es'],
+  directory: __dirname + '/language',
+  defaultLocale: "en",
+  register: global
+});
+
+var app = express();
+app.use(i18n.init);
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
+
+
+console.log("Locale: "+i18n.getLocale());
+
 
 //cargamos el conector a la base de datos
 require('./lib/connectMongoose');
@@ -35,14 +49,17 @@ app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  console.log("Locale error: "+i18n.getLocale());
+  var err = new Error(__('NOT_FOUND'));
   err.status = 404;
   next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  
+  const lang	= req.body.lang || req.query.lang || req.get("Accept-Language");
+  console.log("Lang: "+lang);
+
     if (err.array) { // es un error de express-validator
       err.status = 422;
       const errInfo = err.array({ onlyFirstError: true })[0];

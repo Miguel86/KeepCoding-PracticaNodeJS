@@ -6,6 +6,7 @@ const Usuario = require('../../models/Usuario');
 const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
+const i18n = require("i18n");
 
 router.post('/authenticate', async (req, res, next) =>{
     //recogemos las credenciales
@@ -67,7 +68,7 @@ router.post('/registro', async (req, res, next) =>{
     const nombre = req.body.nombre;
     const email = req.body.email;
     const clave = req.body.clave;
-
+    const lang	= req.body.lang || req.query.lang || req.get("Accept-Language");
     //Buscamos en la base de datos en usuario
     try{
         //creo el filtro
@@ -79,14 +80,15 @@ router.post('/registro', async (req, res, next) =>{
         console.log("Nombre: "+nombre);
         console.log("Password: "+clave);
         console.log("Email: "+email);
+        console.log("Idioma: "+ lang);
 
         const rows = await Usuario.poremail(filter);
         if(!nombre || !email || !clave){
-            res.status(401).json({success: false, error: 'Los campos nombre, clave y email son obligatorios.'}); 
+            res.status(401).json({success: false, error: i18n.__({phrase: 'MANDATORY_FIELDS_REGISTRATION', locale: 'es'})}); 
             return;
         }
         else if(rows){
-            res.status(401).json({success: false, error: 'Ya existe este email en la base de datos.'}); 
+            res.status(401).json({success: false, error: i18n.__({phrase: 'EMAIL_ALREADY_EXIST', locale: 'es'})}); 
             return;
         }
         else{
@@ -94,8 +96,6 @@ router.post('/registro', async (req, res, next) =>{
             bcrypt.hash(usuario.clave, 10, function(err, hash) {
                 if(err){
                     next(err);
-                    next(err);
-                    
                 }
 
                 usuario.clave = hash;
