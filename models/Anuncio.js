@@ -20,6 +20,11 @@ anuncioSchema.statics.list = function(filters, limit, skip, sort, fields) {
 
     return query.exec();
 }
+//Creamos un método estático
+anuncioSchema.statics.listTags = function() {
+    const anunciosCollection = mongoose.connection.collection("anuncios");
+    return(anunciosCollection.distinct("tags"));
+}
 
 //y por último creamos el modelo
 const Anuncio = mongoose.model('Anuncio', anuncioSchema);

@@ -49,16 +49,12 @@ router.post('/authenticate', async (req, res, next) =>{
                     });
                 }
                 else{
-                    res.status = 401;
-                    res.json({error: 'Credenciales incorrectas.'});
-                    return;      
+                    res.status(401).json({success: false, error: 'Credenciales incorrectas'});                    
                 }
             });            
         }
         else{
-            res.status = 401;
-            res.json({error: 'Credenciales incorrectas.'});
-            return;
+            res.status(401).json({success: false, error: 'Credenciales incorrectas'}); 
         }
     }
     catch(err){
@@ -86,13 +82,11 @@ router.post('/registro', async (req, res, next) =>{
 
         const rows = await Usuario.poremail(filter);
         if(!nombre || !email || !clave){
-            res.status = 401;
-            res.json({success: false, error: 'Los campos nombre, clave y email son obligatorios.'});
+            res.status(401).json({success: false, error: 'Los campos nombre, clave y email son obligatorios.'}); 
             return;
         }
         else if(rows){
-            res.status = 401;
-            res.json({success: false, error: 'Ya existe este email en la base de datos.'});
+            res.status(401).json({success: false, error: 'Ya existe este email en la base de datos.'}); 
             return;
         }
         else{

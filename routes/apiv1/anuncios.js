@@ -6,6 +6,22 @@ const Anuncio = require('../../models/Anuncio');
 
 const jwtAuth = require('../../lib/jwtAuths');
 router.use(jwtAuth());
+
+/**
+ * GET /anuncios/tags
+ * Obtener una lista de anuncios
+ */
+router.get('/tags', async (req, res, next) => {
+    try{
+        console.log("Listando tags");
+        const rows = await Anuncio.listTags();
+        res.json({success: true, result: rows});
+    }
+    catch(err){
+        next(err);
+    }
+});
+
 /**
  * GET /anuncios
  * Obtener una lista de anuncios
