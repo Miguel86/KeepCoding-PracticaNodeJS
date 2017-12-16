@@ -4,12 +4,12 @@
         {
             "nombre":   "Miguel",
             "email":   "migueldsc86@gmail.com",
-            "clave":   "tests"
+            "clave":   "$2a$10$6i.HX9e9qQXZhS4BRSDNg.fhykmd2ED7Tdwo/0TXTsiWlMmH45emW"
         },
         {
             "nombre":   "Javier",
             "email":   "jamg44@gmail.com",
-            "clave":   "tests"
+            "clave":   "$2a$10$6i.HX9e9qQXZhS4BRSDNg.fhykmd2ED7Tdwo/0TXTsiWlMmH45emW"
         }
     ]
 }

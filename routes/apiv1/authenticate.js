@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Usuario = require('../../models/Usuario');
+const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
 
@@ -23,30 +24,36 @@ router.post('/authenticate', async (req, res, next) =>{
         
         if(rows.toObject()){
             console.log("Nombre: "+rows.toObject().nombre);
-            console.log("Password: "+rows.toObject().password);
+            console.log("Password: "+rows.toObject().clave);
             console.log("Clave cifrado: "+process.env.JWT_SECRET);
-            if(rows.toObject().clave !== password){
-                res.status = 401;
-                res.json({error: 'Credenciales incorrectas.'});
-                return;    
-            }
-            else{
-                const user = {_id: rows.toObject()._id};
+            console.log("Clave escrita: "+password);
 
-                //Si el usuario existe y la password coincide
-                //creamos un token 
-                //No firmamos objetos de mongoose, mejor un nuevo objeto sólo con lo mínimo.
-                jwt.sign({user_id: user._id}, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                }, (err, token) =>{
-                    if(err){
-                        next(err);
-                        return;
-                    }
-                    //lo devolvemos
-                    res.json({success: true, token: token});
-                });
-            }
+            bcrypt.compare(password, rows.toObject().clave).then(function(rescomparar) {
+                if(rescomparar == true){
+                    console.log("La clave coincide...");
+                    
+                    const user = {_id: rows.toObject()._id};
+                    
+                    //Si el usuario existe y la password coincide
+                    //creamos un token 
+                    //No firmamos objetos de mongoose, mejor un nuevo objeto sólo con lo mínimo.
+                    jwt.sign({user_id: user._id}, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    }, (err, token) =>{
+                        if(err){
+                            next(err);
+                            return;
+                        }
+                        //lo devolvemos
+                        res.json({success: true, token: token});
+                    });
+                }
+                else{
+                    res.status = 401;
+                    res.json({error: 'Credenciales incorrectas.'});
+                    return;      
+                }
+            });            
         }
         else{
             res.status = 401;
@@ -90,14 +97,24 @@ router.post('/registro', async (req, res, next) =>{
         }
         else{
             const usuario = new Usuario(req.body);
-            //lo persistimos en la colección de anuncios
-            usuario.save((err, usuarioGuardado) => {
+            bcrypt.hash(usuario.clave, 10, function(err, hash) {
                 if(err){
                     next(err);
-                    return;
+                    next(err);
+                    
                 }
-                res.json({ success: true, result: usuarioGuardado});
-            })
+
+                usuario.clave = hash;
+
+                //lo persistimos en la colección de usuarios
+                usuario.save((err, usuarioGuardado) => {
+                    if(err){
+                        next(err);
+                        return;
+                    }
+                    res.json({ success: true, result: usuarioGuardado});
+                })
+            });
         }
     }
     catch(err){
