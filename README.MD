@@ -37,7 +37,7 @@ npm run cluster
 
 
 ##Estructura del repositorio
-**/data** contiene los ficheros .JSON para inicializar la base de datos de Mongoose.
+**/data** contiene los ficheros .JSON para inicializar la base de datos de MongoDB.
 
 **/language** contiene las cadenas de idioma de los mensajes a devolver al usuario.
 
