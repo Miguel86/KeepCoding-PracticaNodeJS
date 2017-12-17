@@ -1,5 +1,5 @@
 'use strict';
-
+var debug = require('debug')('nodepop:server');
 const express = require('express');
 const router = express.Router();
 const Usuario = require('../../models/Usuario');
@@ -13,6 +13,7 @@ router.post('/authenticate', async (req, res, next) =>{
 
     //Buscamos en la base de datos en usuario
     try{
+        debug("Autenticando un usuario");
         //creo el filtro
         const filter = {};
         if(email){
@@ -22,14 +23,10 @@ router.post('/authenticate', async (req, res, next) =>{
         const rows = await Usuario.poremail(filter);
         
         if(rows.toObject()){
-            console.log("Nombre: "+rows.toObject().nombre);
-            console.log("Password: "+rows.toObject().clave);
-            console.log("Clave cifrado: "+process.env.JWT_SECRET);
-            console.log("Clave escrita: "+password);
-
+            //Devolvio un usuario con ese email, vamos a validar la contraseña
             bcrypt.compare(password, rows.toObject().clave).then(function(rescomparar) {
                 if(rescomparar == true){
-                    console.log("La clave coincide...");
+                    debug("Clave correcta, adelante!");
                     
                     const user = {_id: rows.toObject()._id};
                     
@@ -48,12 +45,13 @@ router.post('/authenticate', async (req, res, next) =>{
                     });
                 }
                 else{
-                    res.status(401).json({success: false, error: 'Credenciales incorrectas'});                    
+                    debug("Clave incorrecta, fuera!");
+                    res.status(401).json({success: false, error: res.__('INVALID_PASSWORD')});                    
                 }
             });            
         }
-        else{
-            res.status(401).json({success: false, error: 'Credenciales incorrectas'}); 
+        else{//No existe ningun usuario con ese email
+            res.status(401).json({success: false, error: res.__('INVALID_PASSWORD')}); 
         }
     }
     catch(err){
@@ -78,7 +76,6 @@ router.post('/registro', async (req, res, next) =>{
         console.log("Nombre: "+nombre);
         console.log("Password: "+clave);
         console.log("Email: "+email);
-        console.log("Idioma: "+ lang);
 
         const rows = await Usuario.poremail(filter);
         if(!nombre || !email || !clave){

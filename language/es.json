@@ -1,5 +1,6 @@
 {
     "MANDATORY_FIELDS_REGISTRATION": "Los campos nombre, clave y email son obligatorios.",
     "NOT_FOUND": "No encontrado",
-    "EMAIL_ALREADY_EXIST": "Ya existe este email en nuetra base de datos."
+    "EMAIL_ALREADY_EXIST": "Ya existe este email en nuetra base de datos.",
+    "INVALID_PASSWORD": "El email o la contraseña no es correcta."
 }

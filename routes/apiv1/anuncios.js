@@ -1,5 +1,5 @@
 'use strict';
-
+var debug = require('debug')('nodepop:server');
 const express = require('express');
 const router = express.Router();
 const Anuncio = require('../../models/Anuncio');
@@ -13,7 +13,7 @@ router.use(jwtAuth());
  */
 router.get('/tags', async (req, res, next) => {
     try{
-        console.log("Listando tags");
+        debug("Listando tags");
         const rows = await Anuncio.listTags();
         res.json({success: true, result: rows});
     }
@@ -28,6 +28,7 @@ router.get('/tags', async (req, res, next) => {
  */
 router.get('/', async (req, res, next) => {
     try{
+        debug("Obteniendo lista de anuncios");
         const limit = parseInt(req.query.limit);
         const skip = parseInt(req.query.start);
         const sort = req.query.sort;
@@ -62,8 +63,6 @@ router.get('/', async (req, res, next) => {
                     filter.precio = {'$gte': precioArr[0], '$lte': precioArr[1]} ; 
                 }
             }
-            console.log("Longitud de" +precio+ " es "+precioArr.length);
-
         }
         if(tipoAnuncio){
             filter.venta = tipoAnuncio;
@@ -84,15 +83,21 @@ router.get('/', async (req, res, next) => {
  * Crea un anuncio
  */
 router.post('/', (req, res, next) => {
-    const anuncio = new Anuncio(req.body);
-    //lo persistimos en la colección de anuncios
-    anuncio.save((err, anuncioGuardado) => {
-        if(err){
-            next(err);
-            return;
-        }
-        res.json({ success: true, result: anuncioGuardado});
-    })
+    try{
+        debug("Publicando un nuevo anuncio");
+        const anuncio = new Anuncio(req.body);
+        //lo persistimos en la colección de anuncios
+        anuncio.save((err, anuncioGuardado) => {
+            if(err){
+                next(err);
+                return;
+            }
+            res.json({ success: true, result: anuncioGuardado});
+        })
+    }
+    catch(err){
+        next(err);
+    }
 });
 
 module.exports = router;
