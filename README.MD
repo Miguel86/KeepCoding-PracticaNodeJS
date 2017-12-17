@@ -1,16 +1,16 @@
-#Pasos para el despliegue
+# Pasos para el despliegue
 
-##Instalar los módulos necesarios
+## Instalar los módulos necesarios
 ```
 npm install
 ```
 
-##Inicializar la base de datos de MongoDB
+## Inicializar la base de datos de MongoDB
 ```
 npm run installDB
 ```
 
-##Modos de arranque del servidor
+## Modos de arranque del servidor
 * Desarrollo
 ```
 npm run dev
@@ -28,7 +28,7 @@ npm run start
 npm run cluster
 ```
 
-##Peticiones disponibles en el API
+## Peticiones disponibles en el API
 * Petición GET a: ```/anuncios``` devuelve la lista de anuncios.
 * Petición GET a  ```/anuncios/tags``` devuelve la lista de tags en uso en la base de datos de artículos.
 * Petición POST a: ```/anuncios``` crea un nuevo anuncio.
@@ -36,7 +36,7 @@ npm run cluster
 * Petición POST a ```/usuarios/registro``` crea un nuevo usuario en el sistema.
 
 
-##Estructura del repositorio
+## Estructura del repositorio
 **/data** contiene los ficheros .JSON para inicializar la base de datos de MongoDB.
 
 **/language** contiene las cadenas de idioma de los mensajes a devolver al usuario.
