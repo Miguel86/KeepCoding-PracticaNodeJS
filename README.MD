@@ -1,3 +1,7 @@
+# Nodepop: KeepCoding práctica Node.js/MongoDB
+
+Esta es una API de ejemplo llamada Nodepop que sirve para listar ofertas de compra y de venta de artículos.
+
 # Despliegue
 
 ## Instalar los módulos necesarios
