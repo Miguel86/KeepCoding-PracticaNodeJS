@@ -5,14 +5,57 @@
             "nombre":   "Bicicleta",
             "venta":   true,
             "precio":   230.15,
-            "foto":   "images/anuncios/bici.jpg",        "tags":   [   "lifestyle",   "motor"]
+            "foto":   "images/anuncios/bici.jpg",        
+            "tags":   ["lifestyle", "motor"]
         },
         {
             "nombre":   "iPhone   3GS",
             "venta":   false,
             "precio":   50.00,
             "foto":   "images/anuncios/iphone.png",  
-            "tags":   [   "lifestyle",   "mobile"]  
+            "tags":   ["lifestyle", "mobile"]  
+        },
+        {
+            "nombre":   "Mac Book Air",
+            "venta":   false,
+            "precio":   350.00,
+            "foto":   "images/anuncios/mac-book-air.jpg",  
+            "tags":   [ "lifestyle"]  
+        },
+        {
+            "nombre":   "Disco duro 350Gb",
+            "venta":   true,
+            "precio":   40.00,
+            "foto":   "images/anuncios/hard-drive.jpg",  
+            "tags":   [ "work"]  
+        },
+        {
+            "nombre":   "Disco duro 500Gb",
+            "venta":   true,
+            "precio":   50.00,
+            "foto":   "images/anuncios/hard-drive.jpg",  
+            "tags":   [ "work"]  
+        },
+        {
+            "nombre":   "Disco duro 1Tb",
+            "venta":   true,
+            "precio":   70.00,
+            "foto":   "images/anuncios/hard-drive.jpg",  
+            "tags":   [ "work"]  
+        },
+        {
+            "nombre":   "iPhone 4",
+            "venta":   true,
+            "precio":   76.00,
+            "foto":   "images/anuncios/iphone.png",  
+            "tags":   ["lifestyle", "mobile"]  
+        },
+        {
+            "nombre":   "iPhone X",
+            "venta":   true,
+            "precio":   1200.00,
+            "foto":   "images/anuncios/iphone.png",  
+            "tags":   ["lifestyle", "mobile"]  
         }
     ]
 }
