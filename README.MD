@@ -33,7 +33,7 @@ npm run cluster
 
 
 
-#Uso de la API
+# Uso de la API
 ## Peticiones disponibles
 ### Petición POST a ```/usuarios/registro```
 Crea un nuevo usuario en el sistema.
@@ -139,4 +139,4 @@ npm run eslint
 En la capeta ```postman_tests``` se facilita un fichero .JSON que se puede importar en el cliente **Postman** y que crea varias peticiones de ejemplo.
 
 ### Autor
-Miguel Dos Santos Carregal
+Miguel Dos Santos Carregal 
