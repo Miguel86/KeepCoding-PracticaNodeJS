@@ -79,7 +79,7 @@ router.get('/', async (req, res, next) => {
 });
 
 /**
- * POST /nuncios
+ * POST /anuncios
  * Crea un anuncio
  */
 router.post('/', (req, res, next) => {

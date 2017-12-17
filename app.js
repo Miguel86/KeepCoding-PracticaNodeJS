@@ -17,9 +17,6 @@ i18n.configure({
 var app = express();
 app.use(i18n.init);
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-
 //cargamos el conector a la base de datos
 require('./lib/connectMongoose');
 
@@ -35,9 +32,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/users', users);
 
 //Rutas del APIv1
 app.use('/apiv1/usuarios', require('./routes/apiv1/usuarios'));

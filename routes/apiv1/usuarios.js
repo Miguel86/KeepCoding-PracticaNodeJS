@@ -5,7 +5,10 @@ const router = express.Router();
 const Usuario = require('../../models/Usuario');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+/**
+ * POST /usuarios/authenticate
+ * Autentica a un usuario en el sistema
+ */
 router.post('/authenticate', async (req, res, next) =>{
     //recogemos las credenciales
     const email = req.body.email;
@@ -59,6 +62,10 @@ router.post('/authenticate', async (req, res, next) =>{
     }
 });
 
+/**
+ * POST /usuarios/registro
+ * Registra a un nuevo usuario en el sistema.
+ */
 router.post('/registro', async (req, res, next) =>{
     //recogemos las credenciales
     const nombre = req.body.nombre;
