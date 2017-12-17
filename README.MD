@@ -13,6 +13,9 @@ npm run installDB
 ## Configurar la API
 Para ello es necesario renombrar el fichero **.env.example** a **.env** y cubrir los valores de configuración descritos en el fichero.
 
+## Arrancar MongoDB
+En el equipo donde se desee ejecutar esta API debe estar arrancado un servidor de MongoDB.
+
 ## Modos de arranque del servidor
 * Desarrollo
 ```
