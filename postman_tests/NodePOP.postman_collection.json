@@ -1,0 +1,363 @@
+{
+	"info": {
+		"name": "NodePOP",
+		"_postman_id": "44b39dc9-3cde-0e5f-aaa3-979c43bd49a4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autenticacion erronea castellano",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "migueldsc86@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "tests1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/usuarios/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"usuarios",
+						"authenticate"
+					]
+				},
+				"description": "Esta es una petición de prueba que devuelve el  mensaje de autenticación de error en castellano."
+			},
+			"response": []
+		},
+		{
+			"name": "Autenticacion correcta castellano",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "migueldsc86@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "tests",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/usuarios/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"usuarios",
+						"authenticate"
+					]
+				},
+				"description": "Esta es una petición de prueba que devuelve el token."
+			},
+			"response": []
+		},
+		{
+			"name": "Lista anuncios iPhone con filtros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/anuncios?anuncios? tag=mobile&venta=true&nombre=ip&precio=50-&start=1&limit=1&sort=precio&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNTE5NTNlMTk3YWQxYzQ2MDMxMDc1IiwiaWF0IjoxNTEzNTA3MDU0LCJleHAiOjE1MTM2Nzk4NTR9.2mfpK-2uCFhdBPGEm8XQasf9kOPqYf80PdhhzFWBF8Y",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"anuncios"
+					],
+					"query": [
+						{
+							"key": "anuncios? tag",
+							"value": "mobile",
+							"equals": true
+						},
+						{
+							"key": "venta",
+							"value": "true",
+							"equals": true
+						},
+						{
+							"key": "nombre",
+							"value": "ip",
+							"equals": true
+						},
+						{
+							"key": "precio",
+							"value": "50-",
+							"equals": true
+						},
+						{
+							"key": "start",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "limit",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "sort",
+							"value": "precio",
+							"equals": true
+						},
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNTE5NTNlMTk3YWQxYzQ2MDMxMDc1IiwiaWF0IjoxNTEzNTA3MDU0LCJleHAiOjE1MTM2Nzk4NTR9.2mfpK-2uCFhdBPGEm8XQasf9kOPqYf80PdhhzFWBF8Y",
+							"equals": true
+						}
+					]
+				},
+				"description": "Lista los anuncios que tenga el tag mobile, que empiecen por ip, que tengan un precio de 50€ o superior, se salta el primer resultado, sólo devuelve 1 resultado y los ordena por precio."
+			},
+			"response": []
+		},
+		{
+			"name": "Peticion de registro erronea en ingles",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "migueldsc86@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "tests",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Miguel",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/usuarios/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"usuarios",
+						"registro"
+					]
+				},
+				"description": "Esta petición devuelve los mensajes de error en inglés."
+			},
+			"response": []
+		},
+		{
+			"name": "Peticion de registro erronea en castellano",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "migueldsc86@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "tests",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Miguel",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/usuarios/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"usuarios",
+						"registro"
+					]
+				},
+				"description": "Esta petición devuelve los mensajes de error en castellano."
+			},
+			"response": []
+		},
+		{
+			"name": "Peticion de registro correcta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "pepe@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "tests",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "Miguel",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/usuarios/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"usuarios",
+						"registro"
+					]
+				},
+				"description": "Esta petición devuelve el registro correcto de un nuevo usuario."
+			},
+			"response": []
+		},
+		{
+			"name": "Lista todos los anuncios de la base de datos sin filtros.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/apiv1/anuncios?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNTE5NTNlMTk3YWQxYzQ2MDMxMDc1IiwiaWF0IjoxNTEzNDMwMjI2LCJleHAiOjE1MTM2MDMwMjZ9.woxSREHDLzdJ4j8Pnbcj9xlq5uRZaRQnhQN8im5yUnk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"apiv1",
+						"anuncios"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWEzNTE5NTNlMTk3YWQxYzQ2MDMxMDc1IiwiaWF0IjoxNTEzNDMwMjI2LCJleHAiOjE1MTM2MDMwMjZ9.woxSREHDLzdJ4j8Pnbcj9xlq5uRZaRQnhQN8im5yUnk",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
