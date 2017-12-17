@@ -4,9 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Usuario = require('../../models/Usuario');
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
-const i18n = require("i18n");
 
 router.post('/authenticate', async (req, res, next) =>{
     //recogemos las credenciales
@@ -68,7 +66,7 @@ router.post('/registro', async (req, res, next) =>{
     const nombre = req.body.nombre;
     const email = req.body.email;
     const clave = req.body.clave;
-    const lang	= req.body.lang || req.query.lang || req.get("Accept-Language");
+
     //Buscamos en la base de datos en usuario
     try{
         //creo el filtro
@@ -84,11 +82,11 @@ router.post('/registro', async (req, res, next) =>{
 
         const rows = await Usuario.poremail(filter);
         if(!nombre || !email || !clave){
-            res.status(401).json({success: false, error: i18n.__({phrase: 'MANDATORY_FIELDS_REGISTRATION', locale: 'es'})}); 
+            res.status(401).json({success: false, error: res.__('MANDATORY_FIELDS_REGISTRATION')}); 
             return;
         }
         else if(rows){
-            res.status(401).json({success: false, error: i18n.__({phrase: 'EMAIL_ALREADY_EXIST', locale: 'es'})}); 
+            res.status(401).json({success: false, error: res.__('EMAIL_ALREADY_EXIST')}); 
             return;
         }
         else{
