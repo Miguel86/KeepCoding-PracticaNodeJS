@@ -145,7 +145,7 @@ npm run eslint
 ## Ejemplos
 En la capeta ```postman_tests``` se facilita un fichero .JSON que se puede importar en el cliente **Postman** y que crea varias peticiones de ejemplo.
 
-##DevOps - Despligue en AWS
+## DevOps - Despligue en AWS
 El proyecto se encuentra desplegado en AWS:
 * En el subdominio: https://nodepop.hostcreativos.com/
 * En la IP: http://18.218.181.40/ redirecciona a https y debemos aceptar el certificado puesto que ha sido generado para https://devops.hostcreativos.com/ donde se carga la plantilla estática.
